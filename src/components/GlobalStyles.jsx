@@ -340,8 +340,77 @@ section {
   animation: orbitSpin 2.7s linear infinite;
 }
 
-.skill-meter-fill {
-  animation: skillMeterFill 900ms ease-out both;
+.skill-live-fill {
+  width: 0;
+  background: var(--accent);
+  box-shadow:
+    0 0 8px var(--accent),
+    0 0 18px var(--accent),
+    0 0 30px color-mix(in srgb, var(--accent) 55%, transparent);
+
+  animation:
+    skillLiveFill 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+    skillPulse 2.2s ease-in-out 1.8s infinite;
+}
+
+.skill-shine {
+  left: -80px;
+  opacity: 0;
+  border-radius: 999px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.85),
+    transparent
+  );
+
+  filter: blur(3px);
+
+  animation: skillShine 2s ease-in-out 1.6s infinite;
+  pointer-events: none;
+}
+
+@keyframes skillLiveFill {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: var(--level);
+  }
+}
+
+@keyframes skillPulse {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+
+  50% {
+    filter: brightness(1.25);
+  }
+}
+
+
+@keyframes skillShine {
+  0% {
+    left: -80px;
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.9;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
 }
 
 @keyframes orbitSpin {
